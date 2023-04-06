@@ -30,7 +30,16 @@ namespace IUP_BMI_Calculator.Repository
 
         public void AddNewBMIResult(string name, double height, double weight, double BMIScore, string BMIResult)
         {
-            // TODO
+            Init();
+            var bmiResult = new BMIResult()
+            {
+                Name = name,
+                Height = height,
+                Weight = weight,
+                BMIScore = BMIScore,
+                Result = BMIResult
+            };
+            conn.Insert(bmiResult);
         }
     }
 }

@@ -7,8 +7,8 @@ public partial class MainPage : ContentPage
 	public MainPage()
 	{
 		InitializeComponent();
-		// TODO
-	}
+        BindingContext = new BMICalculatorViewModel();
+    }
 
 }
 

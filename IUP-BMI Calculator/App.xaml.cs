@@ -4,13 +4,16 @@ namespace IUP_BMI_Calculator;
 
 public partial class App : Application
 {
-	// TODO
-	public App(// TODO)
-	{
-		InitializeComponent();
+    public BMIResultRepository BMIResultRepository { get; private set; }
 
-		MainPage = new AppShell();
+    public App()
+    {
+        InitializeComponent();
+        long studentID = 5999222007;
+        string studentName = "HugoFRANGIAMONE";
+        string dbPath = FileAccessHelper.GetLocalFilePath($"BMIResult_{studentID}_{studentName}.db3");
+        BMIResultRepository = new BMIResultRepository(dbPath);
 
-		// TODO
-	}
+        MainPage = new AppShell();
+    }
 }

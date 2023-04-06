@@ -46,15 +46,29 @@ namespace IUP_BMI_Calculator.ViewModel
         [RelayCommand]
         public void Save()
         {
-            // TO DO
-            App.
+            if (string.IsNullOrEmpty(Name) || Height <= 0 || Weight <= 0)
+            {
+                // Handle the case where the input values are invalid
+                return;
+            }
+
+            long studentID = 5999222007;
+            string studentName = "HugoFRANGIAMONE";
+            string dbPath = FileAccessHelper.GetLocalFilePath($"BMIResult_{studentID}_{studentName}.db3");
+            var bmiResultRepository = new Repository.BMIResultRepository(dbPath);
+            bmiResultRepository.AddNewBMIResult(Name, Height, Weight, BMIScore, BMIResult);
+
+            // Handle the case where the BMI result was successfully saved
+            Clear();
 
         }
 
         [RelayCommand]
         public void Clear()
         {
-            // TODO
+            Name = "";
+            Height = 0;
+            Weight = 0;
         }
 
     }
